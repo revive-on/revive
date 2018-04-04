@@ -18,12 +18,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Revive</a>
+            <a class="navbar-brand" href="/">Revive</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">연구</a></li>
-                <li><a href="#">건물관리</li>
+                <li class="active"><a href="/lab">연구소</a></li>
+                <li><a href="#">상황</a></li>
+                <li><a href="#">시설 관리</a></li>
+                <li><a href="#">요원 관리</a></li>
+                <li><a href="#">요원 모집</a></li>
+                <li><a href="#">일지</a></li>
             </ul>
         </div>
     </div>
