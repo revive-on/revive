@@ -22,7 +22,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/lab">연구소</a></li>
+                <li><a href="/lab">연구소</a></li>
                 <li><a href="#">상황</a></li>
                 <li><a href="#">시설 관리</a></li>
                 <li><a href="#">요원 관리</a></li>
