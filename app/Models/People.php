@@ -6,7 +6,7 @@
  * Time: 오후 7:47
  */
 
-namespace App\Model;
+namespace App\Models;
 
 
 // 자고로 사람이도다.

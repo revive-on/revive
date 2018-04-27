@@ -6,7 +6,7 @@
  * Time: 오후 7:48
  */
 
-namespace App\Model;
+namespace App\Models;
 
 
 class Status
