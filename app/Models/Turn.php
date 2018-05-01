@@ -9,15 +9,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Turn extends Model
 {
-    protected $table = 'turn';
+    protected $table = 'turns';
 
-    /** @var string 턴 이름 */
-    public $sTurnName;
+    use Notifiable;
 
-    /** @var int 턴 번호 */
-    public $iTurnNo;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'turn_no', 'turn_name',
+    ];
 
 }
