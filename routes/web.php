@@ -12,16 +12,23 @@
 */
 
 
+// Auth Logic...
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+// Core Logic...
 Route::get('/', function () {
     return view('templates.index');
 });
-
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
 Route::get('/lab', function () {
     return view('templates.lab');
 });
 
 Route::get('/turn/{id}', 'TurnController@index');
+
+
