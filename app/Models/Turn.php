@@ -11,6 +11,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * App\Models\Turn
+ *
+ * @property int $id
+ * @property int $number
+ * @property string $name
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Turn whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Turn whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Turn whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Turn whereNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Turn whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Turn extends Model
 {
     protected $table = 'turns';

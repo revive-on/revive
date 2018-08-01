@@ -19,6 +19,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // Core Logic...
+Route::get('/card', function () {
+    return view('templates.card');
+});
+
 Route::get('/', function () {
     return view('templates.index');
 });
