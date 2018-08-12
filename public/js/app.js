@@ -52323,6 +52323,8 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card_vue__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -52352,7 +52354,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    data: function data() {
+        return {
+            cards: [{
+                "name": "연구원",
+                "text": "연구원의 일기"
+            }, {
+                "name": "지수원",
+                "text": "지수원의 일기"
+            }, {
+                "name": "대훈원",
+                "text": "대훈원의 일기"
+            }, {
+                "name": "벼리원",
+                "text": "벼리원의 일기"
+            }]
+        };
+    },
+
     components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
     methods: {
         startGame: function startGame() {
@@ -52366,16 +52386,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.turns = 0;
-    },
-
-    data: function data() {
-        return {
-            gameIsRunning: false,
-            cards: [],
-            turns: 0
-        };
     }
-});
+}, "data", function data() {
+    return {
+        gameIsRunning: false,
+        cards: [],
+        turns: 0
+    };
+}));
 
 /***/ }),
 /* 108 */

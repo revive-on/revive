@@ -12,7 +12,7 @@ use App\Models\Turn;
 use App\User;
 
 
-class TurnController extends Controller
+class TurnsController extends Controller
 {
     public function index($sTurnId)
     {

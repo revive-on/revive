@@ -28,6 +28,28 @@
     import Card from './Card.vue';
 
     export default {
+        data() {
+            return {
+                cards: [
+                    {
+                        "name": "연구원",
+                        "text": "연구원의 일기"
+                    },
+                    {
+                        "name": "지수원",
+                        "text": "지수원의 일기"
+                    },
+                    {
+                        "name": "대훈원",
+                        "text": "대훈원의 일기"
+                    },
+                    {
+                        "name": "벼리원",
+                        "text": "벼리원의 일기"
+                    }
+                ]
+            }
+        },
         components: {Card},
         methods: {
             startGame: function () {

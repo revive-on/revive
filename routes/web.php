@@ -33,6 +33,6 @@ Route::get('/lab', function () {
     return view('templates.lab');
 });
 
-Route::get('/turn/{id}', 'TurnController@index');
+Route::get('/turn/{id}', 'TurnsController@index');
 
-
+Route::get('/events/show', 'EventsController@show');
