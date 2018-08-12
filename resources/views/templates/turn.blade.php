@@ -6,7 +6,7 @@
         turn 테스트
     </p>
     <p>
-        <a class="btn btn-primary" href="/turn/{{$id+1}}" role="button">다음 턴</a>
+        <a class="btn btn-primary" href="/turns/{{$id+1}}" role="button">다음 턴</a>
         {{$turn}}
 
     </p>

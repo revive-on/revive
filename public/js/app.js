@@ -52323,15 +52323,6 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card_vue__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -52354,24 +52345,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
-    data: function data() {
-        return {
-            cards: [{
-                "name": "연구원",
-                "text": "연구원의 일기"
-            }, {
-                "name": "지수원",
-                "text": "지수원의 일기"
-            }, {
-                "name": "대훈원",
-                "text": "대훈원의 일기"
-            }, {
-                "name": "벼리원",
-                "text": "벼리원의 일기"
-            }]
-        };
-    },
+/* harmony default export */ __webpack_exports__["default"] = ({
 
     components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
     methods: {
@@ -52386,14 +52360,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     created: function created() {
         this.turns = 0;
+    },
+
+    data: function data() {
+        return {
+            gameIsRunning: false,
+            cards: [],
+            turns: 0
+        };
     }
-}, "data", function data() {
-    return {
-        gameIsRunning: false,
-        cards: [],
-        turns: 0
-    };
-}));
+});
 
 /***/ }),
 /* 108 */
@@ -52455,8 +52431,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            cards1: [{
+                "id": 1,
+                "name": "연구원2",
+                "text": "연구원의 일기"
+            }, {
+                "id": 2,
+                "name": "지수원",
+                "text": "지수원의 일기"
+            }],
+            cards2: [{
+                "id": 3,
+                "name": "대훈원3",
+                "text": "대훈원의 다이어리"
+            }, {
+                "id": 4,
+                "name": "벼리원",
+                "text": "벼리원의 일기"
+            }]
+        };
+    }
+});
 
 /***/ }),
 /* 110 */
@@ -52467,17 +52481,69 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-card",
-    {
-      staticStyle: { "max-width": "200px" },
-      attrs: { "img-src": "images/hank.jpg", title: "연구원" }
-    },
+    "div",
     [
-      _c("p", { staticClass: "card-text" }, [_vm._v("연구원 자기소개")]),
+      _c(
+        "b-card-group",
+        { attrs: { deck: "" } },
+        _vm._l(_vm.cards1, function(card) {
+          return _c(
+            "div",
+            { key: card.id },
+            [
+              _c(
+                "b-card",
+                {
+                  staticStyle: { "max-width": "200px" },
+                  attrs: { "img-src": "images/hank.jpg", title: card.name }
+                },
+                [
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(card.text))
+                  ]),
+                  _vm._v(" "),
+                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
+                    _vm._v("click")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        })
+      ),
       _vm._v(" "),
-      _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
-        _vm._v("click")
-      ])
+      _c(
+        "b-card-group",
+        { attrs: { deck: "" } },
+        _vm._l(_vm.cards2, function(card) {
+          return _c(
+            "div",
+            { key: card.id, attrs: { deck: "" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticStyle: { "max-width": "200px" },
+                  attrs: { "img-src": "images/hank.jpg", title: card.name }
+                },
+                [
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(card.text))
+                  ]),
+                  _vm._v(" "),
+                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
+                    _vm._v("click")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        })
+      )
     ],
     1
   )
@@ -52523,27 +52589,7 @@ var render = function() {
           ])
         : _c("section", { staticClass: "row controls" }, [_vm._m(0)]),
       _vm._v(" "),
-      _c(
-        "b-card-group",
-        { attrs: { deck: "" } },
-        [
-          _c("card", { attrs: { name: "1" } }),
-          _vm._v(" "),
-          _c("card", { attrs: { name: "2" } })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-card-group",
-        { attrs: { deck: "" } },
-        [
-          _c("card", { attrs: { name: "3" } }),
-          _vm._v(" "),
-          _c("card", { attrs: { name: "4" } })
-        ],
-        1
-      )
+      _c("card")
     ],
     1
   )

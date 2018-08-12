@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // Core Logic...
-Route::get('/card', function () {
+Route::get('/cards', function () {
     return view('templates.card');
 });
 
@@ -33,6 +33,6 @@ Route::get('/lab', function () {
     return view('templates.lab');
 });
 
-Route::get('/turn/{id}', 'TurnsController@index');
+Route::get('/turns/{id}', 'TurnsController@index');
 
 Route::get('/events/show', 'EventsController@show');
