@@ -33,4 +33,10 @@ class EventsController extends Controller
     {
         return $this->repository->pickTurnEventList();
     }
+
+    public function getNewEvent()
+    {
+        $data = $this->repository->show(5)->toArray();
+        return $this->toJson($data);
+    }
 }

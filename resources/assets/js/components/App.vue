@@ -13,19 +13,18 @@
             </div>
 
         </section>
-        <card></card>
+        <deck></deck>
     </div>
 </template>
 
 <script>
-    import Card from './Card.vue';
+    import Deck from './Deck.vue';
 
     export default {
 
-        components: {Card},
+        components: {Deck},
         methods: {
             startGame: function () {
-                console.log('hey');
                 this.gameIsRunning = true;
                 this.turns = 0
             },

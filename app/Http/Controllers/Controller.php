@@ -26,4 +26,19 @@ class Controller extends BaseController
     {
         //$this->middleware('auth');
     }
+
+    /**
+     * return encoded json data
+     *
+     * @param array $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function toJson(array $data)
+    {
+        $header = array(
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'charset' => 'utf-8'
+        );
+        return response()->json($data, 200, $header, JSON_UNESCAPED_UNICODE);
+    }
 }

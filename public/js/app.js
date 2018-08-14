@@ -52321,8 +52321,8 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Deck_vue__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Deck_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Deck_vue__);
 //
 //
 //
@@ -52347,10 +52347,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
+    components: { Deck: __WEBPACK_IMPORTED_MODULE_0__Deck_vue___default.a },
     methods: {
         startGame: function startGame() {
-            console.log('hey');
             this.gameIsRunning = true;
             this.turns = 0;
         },
@@ -52376,17 +52375,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(238)
+}
 var normalizeComponent = __webpack_require__(43)
 /* script */
 var __vue_script__ = __webpack_require__(109)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(240)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-4cf53df2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -52431,134 +52434,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            cards1: [{
-                "id": 1,
-                "name": "연구원2",
-                "text": "연구원의 일기"
-            }, {
-                "id": 2,
-                "name": "지수원",
-                "text": "지수원의 일기"
-            }],
-            cards2: [{
-                "id": 3,
-                "name": "대훈원3",
-                "text": "대훈원의 다이어리"
-            }, {
-                "id": 4,
-                "name": "벼리원",
-                "text": "벼리원의 일기"
-            }]
-        };
+    props: ["event"],
+    name: "card",
+    methods: {
+        click: function click() {
+            console.log("click");
+            this.checkResolved();
+            this.changeToNewEvent();
+        },
+        checkResolved: function checkResolved() {},
+        changeToNewEvent: function changeToNewEvent() {
+            var self = this;
+            axios.get("/events/getNewEvent").then(function (response) {
+                var data = response.data;
+                self.event = data[0];
+            }).catch(function (ex) {
+                // ex 처리
+            });
+        }
     }
 });
 
 /***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "b-card-group",
-        { attrs: { deck: "" } },
-        _vm._l(_vm.cards1, function(card) {
-          return _c(
-            "div",
-            { key: card.id },
-            [
-              _c(
-                "b-card",
-                {
-                  staticStyle: { "max-width": "200px" },
-                  attrs: { "img-src": "images/hank.jpg", title: card.name }
-                },
-                [
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(card.text))
-                  ]),
-                  _vm._v(" "),
-                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
-                    _vm._v("click")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        })
-      ),
-      _vm._v(" "),
-      _c(
-        "b-card-group",
-        { attrs: { deck: "" } },
-        _vm._l(_vm.cards2, function(card) {
-          return _c(
-            "div",
-            { key: card.id, attrs: { deck: "" } },
-            [
-              _c(
-                "b-card",
-                {
-                  staticStyle: { "max-width": "200px" },
-                  attrs: { "img-src": "images/hank.jpg", title: card.name }
-                },
-                [
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(card.text))
-                  ]),
-                  _vm._v(" "),
-                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
-                    _vm._v("click")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        })
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4cf53df2", module.exports)
-  }
-}
-
-/***/ }),
+/* 110 */,
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52589,7 +52489,7 @@ var render = function() {
           ])
         : _c("section", { staticClass: "row controls" }, [_vm._m(0)]),
       _vm._v(" "),
-      _c("card")
+      _c("deck")
     ],
     1
   )
@@ -63550,6 +63450,230 @@ exports.push([module.i, ".fade-enter-active, .fade-leave-active {\n    transitio
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(239);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(105)("c735cfde", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4cf53df2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4cf53df2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-card",
+    {
+      staticStyle: { "max-width": "200px" },
+      attrs: { "img-src": "images/hank.jpg", title: _vm.event.name }
+    },
+    [
+      _c("p", { staticClass: "event-text" }, [_vm._v(_vm._s(_vm.event.text))]),
+      _vm._v(" "),
+      _c(
+        "b-button",
+        { attrs: { variant: "primary" }, on: { click: _vm.click } },
+        [_vm._v("click")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4cf53df2", module.exports)
+  }
+}
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(43)
+/* script */
+var __vue_script__ = __webpack_require__(242)
+/* template */
+var __vue_template__ = __webpack_require__(243)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Deck.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-086d23c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-086d23c0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 242 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
+    created: function created() {
+        var self = this;
+        axios.get("/events/show").then(function (response) {
+            var data = response.data;
+            self.event_1 = data[0];
+            self.event_2 = data[1];
+            self.event_3 = data[2];
+            self.event_4 = data[3];
+        }).catch(function (ex) {
+            // ex 처리
+        });
+    },
+    data: function data() {
+        return {
+            event_1: [],
+            event_2: [],
+            event_3: [],
+            event_4: []
+        };
+    }
+});
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "b-card-group",
+        { attrs: { deck: "" } },
+        [
+          _c("card", { attrs: { event: _vm.event_1 } }),
+          _vm._v(" "),
+          _c("card", { attrs: { event: _vm.event_2 } })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-card-group",
+        { attrs: { deck: "" } },
+        [
+          _c("card", { attrs: { event: _vm.event_3 } }),
+          _vm._v(" "),
+          _c("card", { attrs: { event: _vm.event_4 } })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-086d23c0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
