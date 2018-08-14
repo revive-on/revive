@@ -1,14 +1,20 @@
 <template>
-    <b-card img-src="images/hank.jpg" style="max-width:200px" v-bind:title="event.name">
+    <b-card img-src="images/hank.jpg" style="max-width:200px" v-bind:title="this.event.name">
         <p class="event-text">{{event.text}}</p>
-        <b-button @click="click" variant="primary">click</b-button>
+        <b-button @click="click" variant="primary">clicks</b-button>
     </b-card>
 </template>
 
 <script>
     export default {
-        props: ["event"],
+        props: ["initialEvent"],
         name: "card",
+        data: function () {
+            return {
+                event: this.initialEvent
+            }
+        },
+
         methods: {
             click: function () {
                 console.log("click");
@@ -21,8 +27,7 @@
             changeToNewEvent: function () {
                 let self = this;
                 axios.get("/events/getNewEvent").then(function (response) {
-                    let data = response.data;
-                    self.event = data[0];
+                    self.event = response.data;
                 }).catch(function (ex) {
                     // ex 처리
                 });
