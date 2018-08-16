@@ -23,7 +23,6 @@
         },
         methods: {
             click: function () {
-                console.log("click");
                 this.checkResolved();
                 this.changeToNewEvent();
             },
@@ -31,12 +30,7 @@
 
             },
             changeToNewEvent: function () {
-                let self = this;
-                axios.get("/cardEvents/getNewEvent").then(function (response) {
-                    self.cardEvent = response.data;
-                }).catch(function (ex) {
-                    // ex 처리
-                });
+                this.$parent.fireNewEvents();
             }
         }
     }

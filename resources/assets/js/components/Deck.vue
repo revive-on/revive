@@ -17,17 +17,22 @@
     export default {
         components: {Card},
         created() {
-            let self = this;
-            axios.get("/cardEvents/listCardEvents").then(function (response) {
-                let data = response.data;
-                console.log(data[0]);
-                self.event_1 = data[0];
-                self.event_2 = data[1];
-                self.event_3 = data[2];
-                self.event_4 = data[3];
-            }).catch(function (ex) {
-                // ex 처리
-            });
+            this.fireNewEvents();
+        },
+        methods: {
+            fireNewEvents: function () {
+                let self = this;
+                console.log("fire!");
+                axios.get("/cardEvents/listCardEvents").then(function (response) {
+                    let data = response.data;
+                    self.event_1 = data[0];
+                    self.event_2 = data[1];
+                    self.event_3 = data[2];
+                    self.event_4 = data[3];
+                }).catch(function (ex) {
+                    // ex 처리
+                });
+            }
         },
         data() {
             return {

@@ -13,7 +13,7 @@ class CardEventRepository extends Repository
 {
     public function getNewEventDeck()
     {
-        $data = $this->model->take(4)->get()->toArray();
+        $data = $this->model->inRandomOrder()->take(4)->get()->toArray();
         return $data;
     }
 }

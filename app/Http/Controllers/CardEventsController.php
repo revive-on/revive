@@ -44,6 +44,7 @@ class CardEventsController extends Controller
      */
     public function pickCardEvent(array $cardEvent)
     {
+        // get by random
         $this->repository->update($cardEvent, $cardEvent['id']);
     }
 

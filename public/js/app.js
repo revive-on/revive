@@ -52444,17 +52444,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
     created: function created() {
-        var self = this;
-        axios.get("/cardEvents/listCardEvents").then(function (response) {
-            var data = response.data;
-            console.log(data[0]);
-            self.event_1 = data[0];
-            self.event_2 = data[1];
-            self.event_3 = data[2];
-            self.event_4 = data[3];
-        }).catch(function (ex) {
-            // ex 처리
-        });
+        this.fireNewEvents();
+    },
+
+    methods: {
+        fireNewEvents: function fireNewEvents() {
+            var self = this;
+            console.log("fire!");
+            axios.get("/cardEvents/listCardEvents").then(function (response) {
+                var data = response.data;
+                self.event_1 = data[0];
+                self.event_2 = data[1];
+                self.event_3 = data[2];
+                self.event_4 = data[3];
+            }).catch(function (ex) {
+                // ex 처리
+            });
+        }
     },
     data: function data() {
         return {
@@ -52552,7 +52558,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52588,18 +52594,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         click: function click() {
-            console.log("click");
             this.checkResolved();
             this.changeToNewEvent();
         },
         checkResolved: function checkResolved() {},
         changeToNewEvent: function changeToNewEvent() {
-            var self = this;
-            axios.get("/cardEvents/getNewEvent").then(function (response) {
-                self.cardEvent = response.data;
-            }).catch(function (ex) {
-                // ex 처리
-            });
+            this.$parent.fireNewEvents();
         }
     }
 });
