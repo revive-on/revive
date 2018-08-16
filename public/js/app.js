@@ -52443,10 +52443,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { Card: __WEBPACK_IMPORTED_MODULE_0__Card_vue___default.a },
-    mounted: function mounted() {
+    created: function created() {
         var self = this;
-        axios.get("/events/show").then(function (response) {
+        axios.get("/cardEvents/listCardEvents").then(function (response) {
             var data = response.data;
+            console.log(data[0]);
             self.event_1 = data[0];
             self.event_2 = data[1];
             self.event_3 = data[2];
@@ -52551,7 +52552,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52571,14 +52572,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ["initialEvent"],
+    props: ["cardEventValue"],
     name: "card",
     data: function data() {
         return {
-            event: this.initialEvent
+            cardEvent: []
         };
     },
+    created: function created() {},
 
+    watch: {
+        cardEventValue: function cardEventValue(newVal) {
+            this.cardEvent = newVal;
+        }
+    },
     methods: {
         click: function click() {
             console.log("click");
@@ -52588,8 +52595,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         checkResolved: function checkResolved() {},
         changeToNewEvent: function changeToNewEvent() {
             var self = this;
-            axios.get("/events/getNewEvent").then(function (response) {
-                self.event = response.data;
+            axios.get("/cardEvents/getNewEvent").then(function (response) {
+                self.cardEvent = response.data;
             }).catch(function (ex) {
                 // ex 처리
             });
@@ -52609,10 +52616,12 @@ var render = function() {
     "b-card",
     {
       staticStyle: { "max-width": "200px" },
-      attrs: { "img-src": "images/hank.jpg", title: this.event.name }
+      attrs: { "img-src": "images/hank.jpg", title: _vm.cardEvent.name }
     },
     [
-      _c("p", { staticClass: "event-text" }, [_vm._v(_vm._s(_vm.event.text))]),
+      _c("p", { staticClass: "event-text" }, [
+        _vm._v(_vm._s(_vm.cardEvent.text))
+      ]),
       _vm._v(" "),
       _c(
         "b-button",
@@ -52648,9 +52657,9 @@ var render = function() {
         "b-card-group",
         { attrs: { deck: "" } },
         [
-          _c("card", { attrs: { "initial-event": _vm.event_1 } }),
+          _c("card", { attrs: { "card-event-value": _vm.event_1 } }),
           _vm._v(" "),
-          _c("card", { attrs: { "initial-event": _vm.event_2 } })
+          _c("card", { attrs: { "card-event-value": _vm.event_2 } })
         ],
         1
       ),
@@ -52659,9 +52668,9 @@ var render = function() {
         "b-card-group",
         { attrs: { deck: "" } },
         [
-          _c("card", { attrs: { "initial-event": _vm.event_3 } }),
+          _c("card", { attrs: { "card-event-value": _vm.event_3 } }),
           _vm._v(" "),
-          _c("card", { attrs: { "initial-event": _vm.event_4 } })
+          _c("card", { attrs: { "card-event-value": _vm.event_4 } })
         ],
         1
       )

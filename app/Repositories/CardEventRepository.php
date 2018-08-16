@@ -9,11 +9,11 @@
 namespace App\Repositories;
 
 
-class EventRepository extends Repository
+class CardEventRepository extends Repository
 {
-    public function pickTurnEventList()
+    public function getNewEventDeck()
     {
         $data = $this->model->take(4)->get()->toArray();
-        return $this->toJson($data);
+        return $data;
     }
 }

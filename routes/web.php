@@ -35,6 +35,6 @@ Route::get('/lab', function () {
 
 Route::get('/turns/{id}', 'TurnsController@index');
 
-Route::get('/events/show', 'EventsController@show');
+Route::get('/cardEvents/listCardEvents', 'CardEventsController@listCardEvents');
 
-Route::get('/events/getNewEvent', 'EventsController@getNewEvent');
+Route::get('/cardEvents/getNewEvent', 'CardEventsController@getNewEvent');

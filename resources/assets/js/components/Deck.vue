@@ -1,12 +1,12 @@
 <template>
     <div>
         <b-card-group deck>
-            <card :initial-event="event_1"></card>
-            <card :initial-event="event_2"></card>
+            <card :card-event-value="event_1"></card>
+            <card :card-event-value="event_2"></card>
         </b-card-group>
         <b-card-group deck>
-            <card :initial-event="event_3"></card>
-            <card :initial-event="event_4"></card>
+            <card :card-event-value="event_3"></card>
+            <card :card-event-value="event_4"></card>
         </b-card-group>
     </div>
 </template>
@@ -16,10 +16,11 @@
 
     export default {
         components: {Card},
-        mounted() {
+        created() {
             let self = this;
-            axios.get("/events/show").then(function (response) {
+            axios.get("/cardEvents/listCardEvents").then(function (response) {
                 let data = response.data;
+                console.log(data[0]);
                 self.event_1 = data[0];
                 self.event_2 = data[1];
                 self.event_3 = data[2];
