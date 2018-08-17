@@ -52558,7 +52558,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.fade-enter-active[data-v-4cf53df2] {\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    -webkit-animation: bounce-in-data-v-4cf53df2 .5s;\n            animation: bounce-in-data-v-4cf53df2 .5s;\n}\n.card-event[data-v-4cf53df2] {\n    border-radius: 18px;\n    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);\n            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);\n    -webkit-transition-property: -webkit-transform, -webkit-box-shadow;\n    transition-property: -webkit-transform, -webkit-box-shadow;\n    transition-property: transform, box-shadow;\n    transition-property: transform, box-shadow, -webkit-transform, -webkit-box-shadow;\n    -webkit-transition-duration: 0.3s;\n            transition-duration: 0.3s;\n    -webkit-transition-timing-function: ease-out;\n            transition-timing-function: ease-out;\n}\n.card-event-hover[data-v-4cf53df2] {\n}\n@-webkit-keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n@keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n", ""]);
 
 // exports
 
@@ -52576,12 +52576,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ["cardEventValue"],
     name: "card",
     data: function data() {
         return {
+            show: true,
             cardEvent: []
         };
     },
@@ -52613,20 +52617,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-card",
+    "transition",
     {
-      staticStyle: { "max-width": "200px" },
-      attrs: { "img-src": "images/hank.jpg", title: _vm.cardEvent.name }
+      attrs: {
+        name: "fade",
+        appear: "",
+        "appear-active-class": "fade-enter-active"
+      }
     },
     [
-      _c("p", { staticClass: "event-text" }, [
-        _vm._v(_vm._s(_vm.cardEvent.text))
-      ]),
-      _vm._v(" "),
       _c(
-        "b-button",
-        { attrs: { variant: "primary" }, on: { click: _vm.click } },
-        [_vm._v("clicks")]
+        "b-card",
+        {
+          staticClass: "card-event",
+          staticStyle: { "max-width": "200px" },
+          attrs: { "img-src": "images/hank.jpg", title: _vm.cardEvent.name }
+        },
+        [
+          _c("p", { staticClass: "event-text" }, [
+            _vm._v(_vm._s(_vm.cardEvent.text))
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            { attrs: { variant: "primary" }, on: { click: _vm.click } },
+            [_vm._v("clicks")]
+          )
+        ],
+        1
       )
     ],
     1
