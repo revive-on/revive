@@ -1,12 +1,7 @@
 <template>
     <div>
         <b-card-group deck>
-            <card :card-event-value="event_1"></card>
-            <card :card-event-value="event_2"></card>
-        </b-card-group>
-        <b-card-group deck>
-            <card :card-event-value="event_3"></card>
-            <card :card-event-value="event_4"></card>
+            <card v-for="eventValue in events" :card-event-value="eventValue" :key="eventValue.id"></card>
         </b-card-group>
     </div>
 </template>
@@ -22,24 +17,21 @@
         methods: {
             fireNewEvents: function () {
                 let self = this;
+                self.events.splice(0, self.events.length);
                 console.log("fire!");
                 axios.get("/cardEvents/listCardEvents").then(function (response) {
                     let data = response.data;
-                    self.event_1 = data[0];
-                    self.event_2 = data[1];
-                    self.event_3 = data[2];
-                    self.event_4 = data[3];
+                    self.events.push(...data);
                 }).catch(function (ex) {
                     // ex 처리
                 });
+
             }
         },
         data() {
             return {
-                event_1: [],
-                event_2: [],
-                event_3: [],
-                event_4: []
+                show: true,
+                events: []
             }
         }
     }

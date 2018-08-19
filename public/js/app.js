@@ -52425,11 +52425,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card_vue__);
-//
-//
-//
-//
-//
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 //
 //
 //
@@ -52450,13 +52447,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         fireNewEvents: function fireNewEvents() {
             var self = this;
+            self.events.splice(0, self.events.length);
             console.log("fire!");
             axios.get("/cardEvents/listCardEvents").then(function (response) {
+                var _self$events;
+
                 var data = response.data;
-                self.event_1 = data[0];
-                self.event_2 = data[1];
-                self.event_3 = data[2];
-                self.event_4 = data[3];
+                (_self$events = self.events).push.apply(_self$events, _toConsumableArray(data));
             }).catch(function (ex) {
                 // ex 처리
             });
@@ -52464,10 +52461,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            event_1: [],
-            event_2: [],
-            event_3: [],
-            event_4: []
+            show: true,
+            events: []
         };
     }
 });
@@ -52558,7 +52553,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active[data-v-4cf53df2] {\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    -webkit-animation: bounce-in-data-v-4cf53df2 .5s;\n            animation: bounce-in-data-v-4cf53df2 .5s;\n}\n.card-event[data-v-4cf53df2] {\n    border-radius: 18px;\n    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);\n            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);\n    -webkit-transition-property: -webkit-transform, -webkit-box-shadow;\n    transition-property: -webkit-transform, -webkit-box-shadow;\n    transition-property: transform, box-shadow;\n    transition-property: transform, box-shadow, -webkit-transform, -webkit-box-shadow;\n    -webkit-transition-duration: 0.3s;\n            transition-duration: 0.3s;\n    -webkit-transition-timing-function: ease-out;\n            transition-timing-function: ease-out;\n}\n.card-event-hover[data-v-4cf53df2] {\n}\n@-webkit-keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n@keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n", ""]);
+exports.push([module.i, "\n.fade-enter-active[data-v-4cf53df2] {\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    -webkit-animation: bounce-in-data-v-4cf53df2 .5s;\n            animation: bounce-in-data-v-4cf53df2 .5s;\n}\n.fade-leave-active[data-v-4cf53df2] {\n    animation: bounce-in-data-v-4cf53df2 .5s reverse;\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s;\n}\n.fade-leave-to[data-v-4cf53df2] {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.card-event[data-v-4cf53df2] {\n    border-radius: 18px;\n\n    -webkit-transition-property: -webkit-transform, -webkit-box-shadow;\n\n    transition-property: -webkit-transform, -webkit-box-shadow;\n\n    transition-property: transform, box-shadow;\n\n    transition-property: transform, box-shadow, -webkit-transform, -webkit-box-shadow;\n    -webkit-transition-duration: 0.3s;\n            transition-duration: 0.3s;\n    -webkit-transition-timing-function: ease-out;\n            transition-timing-function: ease-out;\n}\n.card-event[data-v-4cf53df2]:hover {\n    -webkit-transform: scale(1.1, 1.1);\n            transform: scale(1.1, 1.1);\n}\n@-webkit-keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n@keyframes bounce-in-data-v-4cf53df2 {\n0% {\n        -webkit-transform: scale(0);\n                transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.5);\n                transform: scale(1.5);\n}\n100% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n}\n}\n", ""]);
 
 // exports
 
@@ -52585,17 +52580,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "card",
     data: function data() {
         return {
-            show: true,
-            cardEvent: []
+            cardEvent: this.cardEventValue,
+            show: true
         };
     },
     created: function created() {},
 
-    watch: {
-        cardEventValue: function cardEventValue(newVal) {
-            this.cardEvent = newVal;
-        }
-    },
     methods: {
         click: function click() {
             this.checkResolved();
@@ -52603,6 +52593,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         checkResolved: function checkResolved() {},
         changeToNewEvent: function changeToNewEvent() {
+            this.show = false;
             this.$parent.fireNewEvents();
         }
     }
@@ -52618,34 +52609,30 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "transition",
-    {
-      attrs: {
-        name: "fade",
-        appear: "",
-        "appear-active-class": "fade-enter-active"
-      }
-    },
+    { attrs: { name: "fade", appear: "" } },
     [
-      _c(
-        "b-card",
-        {
-          staticClass: "card-event",
-          staticStyle: { "max-width": "200px" },
-          attrs: { "img-src": "images/hank.jpg", title: _vm.cardEvent.name }
-        },
-        [
-          _c("p", { staticClass: "event-text" }, [
-            _vm._v(_vm._s(_vm.cardEvent.text))
-          ]),
-          _vm._v(" "),
-          _c(
-            "b-button",
-            { attrs: { variant: "primary" }, on: { click: _vm.click } },
-            [_vm._v("clicks")]
+      _vm.show
+        ? _c(
+            "b-card",
+            {
+              staticClass: "card-event",
+              staticStyle: { "max-width": "200px" },
+              attrs: { "img-src": "images/hank.jpg", title: _vm.cardEvent.name }
+            },
+            [
+              _c("p", { staticClass: "event-text" }, [
+                _vm._v(_vm._s(_vm.cardEvent.text))
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                { attrs: { variant: "primary" }, on: { click: _vm.click } },
+                [_vm._v("click")]
+              )
+            ],
+            1
           )
-        ],
-        1
-      )
+        : _vm._e()
     ],
     1
   )
@@ -52674,23 +52661,12 @@ var render = function() {
       _c(
         "b-card-group",
         { attrs: { deck: "" } },
-        [
-          _c("card", { attrs: { "card-event-value": _vm.event_1 } }),
-          _vm._v(" "),
-          _c("card", { attrs: { "card-event-value": _vm.event_2 } })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-card-group",
-        { attrs: { deck: "" } },
-        [
-          _c("card", { attrs: { "card-event-value": _vm.event_3 } }),
-          _vm._v(" "),
-          _c("card", { attrs: { "card-event-value": _vm.event_4 } })
-        ],
-        1
+        _vm._l(_vm.events, function(eventValue) {
+          return _c("card", {
+            key: eventValue.id,
+            attrs: { "card-event-value": eventValue }
+          })
+        })
       )
     ],
     1

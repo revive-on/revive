@@ -1,9 +1,9 @@
 <template>
-    <transition name="fade" appear
-                appear-active-class="fade-enter-active">
-        <b-card class="card-event" img-src="images/hank.jpg" style="max-width:200px" v-bind:title="cardEvent.name">
+    <transition name="fade" appear >
+        <b-card class="card-event" img-src="images/hank.jpg" style="max-width:200px"
+                v-bind:title="cardEvent.name" v-if="show">
             <p class="event-text">{{cardEvent.text}}</p>
-            <b-button @click="click" variant="primary">clicks</b-button>
+            <b-button @click="click" variant="primary">click</b-button>
         </b-card>
     </transition>
 </template>
@@ -14,16 +14,11 @@
         name: "card",
         data: function () {
             return {
-                show: true,
-                cardEvent: []
+                cardEvent: this.cardEventValue,
+                show: true
             }
         },
         created() {
-        },
-        watch: {
-            cardEventValue: function (newVal) {
-                this.cardEvent = newVal;
-            }
         },
         methods: {
             click: function () {
@@ -34,6 +29,7 @@
 
             },
             changeToNewEvent: function () {
+                this.show = false;
                 this.$parent.fireNewEvents();
             }
         }
@@ -46,16 +42,26 @@
         animation: bounce-in .5s;
     }
 
+    .fade-leave-active {
+        animation: bounce-in .5s reverse;
+        transition: opacity .5s;
+    }
+
+    .fade-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
     .card-event {
         border-radius: 18px;
-        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);
+
         transition-property: transform, box-shadow;
         transition-duration: 0.3s;
         transition-timing-function: ease-out;
     }
 
-    .card-event-hover {
-
+    .card-event:hover {
+        transform: scale(1.1, 1.1);
     }
 
     @keyframes bounce-in {
