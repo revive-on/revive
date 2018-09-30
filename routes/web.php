@@ -23,6 +23,10 @@ Route::get('/cards', function () {
     return view('templates.card');
 });
 
+Route::get('/redrock', function(){
+    return view('templates.card');
+});
+
 Route::get('/', function () {
     return view('templates.index');
 });
@@ -38,3 +42,5 @@ Route::get('/turns/{id}', 'TurnsController@index');
 Route::get('/cardEvents/listCardEvents', 'CardEventsController@listCardEvents');
 
 Route::get('/cardEvents/getNewEvent', 'CardEventsController@getNewEvent');
+
+Route::Get('/hi', 'CardEventsController@hi');

@@ -11,22 +11,28 @@ namespace App\Http\Controllers;
 
 use App\Models\CardEvent;
 use App\Repositories\CardEventRepository;
+use App\Services\CardEventService;
 
 class CardEventsController extends Controller
 {
     /**
-     * @var CardEventRepository
+     * @var CardEventService
      */
-    protected $repository;
+    protected $service;
 
     /**
      * CardEventsController constructor.
-     * @param CardEvent $cardEvent
+     * @param CardEventService $service
      */
-    public function __construct(CardEvent $cardEvent)
+    public function __construct(CardEventService $service)
     {
         parent::__construct();
-        $this->repository = new CardEventRepository($cardEvent);
+        $this->service = $service;
+    }
+
+    public function hi()
+    {
+        $this->service->executeCardEvents(array());
     }
 
     /**

@@ -21055,8 +21055,8 @@ __webpack_require__(77);
 
 window.Vue = __webpack_require__(43);
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.config.devtools = true;
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.config.performance = true;
+//Vue.config.devtools = true;
+//Vue.config.performance = true;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

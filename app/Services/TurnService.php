@@ -9,7 +9,7 @@
 namespace App\Services;
 
 
-class TurnService
+class TurnService extends Service
 {
 
 }
