@@ -34,7 +34,7 @@
 </div>
 <p></p>
 <audio controls autoplay loop>
-    <source src="sound/trunks-theme.mp3" type="audio/mpeg">
+    <!--<source src="sound/trunks-theme.mp3" type="audio/mpeg">-->
     Your browser does not support the audio element.
 </audio>
 <script src="js/app.js"></script>
