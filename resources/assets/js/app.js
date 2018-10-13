@@ -18,6 +18,7 @@ window.Vue = require('vue');
  */
 
 import App from './components/App.vue';
+import TailTool from './components/log/TailTool.vue';
 
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
@@ -31,7 +32,6 @@ const app = new Vue({
     el: '#app',
 
     components: {
-        App
-    },
-    render: h => h(App)
+        App, TailTool
+    }
 });

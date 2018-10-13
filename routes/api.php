@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('/cards', 'CardsController', [
     'except' => ['edit', 'show', 'store']
 ]);
+
+Route::get('/tests', 'CardEventsController@tests');
+
+Route::post('/tails', 'Log\TailController');

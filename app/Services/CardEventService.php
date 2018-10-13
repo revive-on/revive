@@ -11,6 +11,7 @@ namespace App\Services;
 
 use App\Models\CardEvent;
 use App\Repositories\CardEventRepository;
+use Spatie\Activitylog\Models\Activity;
 
 class CardEventService extends Service
 {

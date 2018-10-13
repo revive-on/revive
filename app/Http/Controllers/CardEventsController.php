@@ -12,6 +12,8 @@ namespace App\Http\Controllers;
 use App\Models\CardEvent;
 use App\Repositories\CardEventRepository;
 use App\Services\CardEventService;
+use Illuminate\Support\Facades\Log;
+use Spatie\Activitylog\Models\Activity;
 
 class CardEventsController extends Controller
 {
@@ -33,6 +35,12 @@ class CardEventsController extends Controller
     public function hi()
     {
         $this->service->executeCardEvents(array());
+    }
+
+    public function tests()
+    {
+        Log::info('하이');
+        Log::info('헬로');
     }
 
     /**

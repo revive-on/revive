@@ -19,6 +19,7 @@
     "vue": "^2.5.16"
   },
   "dependencies": {
+    "animated-scroll-to": "^1.2.2",
     "bootstrap-vue": "^2.0.0-rc.11"
   }
 }

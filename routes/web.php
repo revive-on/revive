@@ -37,10 +37,14 @@ Route::get('/lab', function () {
     return view('templates.lab');
 });
 
+Route::get('/logs', function(){
+    return view('templates.log');
+});
+
 Route::get('/turns/{id}', 'TurnsController@index');
 
 Route::get('/cardEvents/listCardEvents', 'CardEventsController@listCardEvents');
 
 Route::get('/cardEvents/getNewEvent', 'CardEventsController@getNewEvent');
 
-Route::Get('/hi', 'CardEventsController@hi');
+Route::get('/hi', 'CardEventsController@hi');
