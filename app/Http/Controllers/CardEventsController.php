@@ -13,7 +13,6 @@ use App\Models\CardEvent;
 use App\Repositories\CardEventRepository;
 use App\Services\CardEventService;
 use Illuminate\Support\Facades\Log;
-use Spatie\Activitylog\Models\Activity;
 
 class CardEventsController extends Controller
 {
