@@ -1667,7 +1667,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * log a user into the application without sessions or cookies.
+         * Log a user into the application without sessions or cookies.
          *
          * @param array $credentials
          * @return bool 
@@ -1755,7 +1755,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * log a user into the application.
+         * Log a user into the application.
          *
          * @param \Illuminate\Contracts\Auth\Authenticatable $user
          * @param bool $remember
@@ -3725,7 +3725,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * log a query in the connection's query log.
+         * Log a query in the connection's query log.
          *
          * @param string $query
          * @param array $bindings
@@ -5602,7 +5602,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * log a message to the logs.
+         * Log a message to the logs.
          *
          * @param string $level
          * @param string $message
