@@ -16,4 +16,9 @@ class CardEventRepository extends Repository
         $data = $this->model->inRandomOrder()->take(4)->get()->toArray();
         return $data;
     }
+
+    public function getAllCount()
+    {
+        $data = $this->model->count();
+    }
 }

@@ -18,6 +18,7 @@ window.Vue = require('vue');
  */
 
 import App from './components/App.vue';
+import GameMap from './components/Map.vue';
 import TailTool from './components/log/TailTool.vue';
 
 import Vue from 'vue'
@@ -29,9 +30,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 const app = new Vue({
-    el: '#app',
+  el: '#app',
 
-    components: {
-        App, TailTool
-    }
+  components: {
+    GameMap, App, TailTool
+  }
 });

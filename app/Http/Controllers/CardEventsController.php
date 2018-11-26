@@ -22,6 +22,11 @@ class CardEventsController extends Controller
     protected $service;
 
     /**
+     * @var int
+     */
+    protected $page;
+
+    /**
      * CardEventsController constructor.
      * @param CardEventService $service
      */
@@ -31,6 +36,29 @@ class CardEventsController extends Controller
         $this->service = $service;
     }
 
+    public function __invoke()
+    {
+        if (empty($this->page)) {
+            $this->page = 1;
+        }
+        $data = $this->service->getAll()->toArray();
+        $total = $this->service->getAllCount();
+        $perPage = 3;
+        $lastPage = $total / $perPage + 1;
+        $returnData = array(
+            'data' => $data,
+            'total' => $total,
+            'per_page' => $perPage,
+            'current_page' => 1,
+            'last_page' => $lastPage,
+            'next_page_url' => '/api/card-events?page=' . $this->page,
+            'prev_page_url' => null,
+            "from" => 1,
+            "to" => $lastPage
+        );
+        return $this->toJson($returnData);
+    }
+
     public function hi()
     {
         $this->service->executeCardEvents(array());
@@ -38,8 +66,7 @@ class CardEventsController extends Controller
 
     public function tests()
     {
-        Log::info('하이');
-        Log::info('헬로');
+        Log::info('테스트 버튼을 클릭했다.');
     }
 
     /**

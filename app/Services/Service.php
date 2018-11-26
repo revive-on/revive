@@ -22,4 +22,13 @@ class Service
     {
         $this->repository = $repository;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getById($id)
+    {
+        return $this->repository->show($id);
+    }
 }

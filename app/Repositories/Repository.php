@@ -47,7 +47,11 @@ class Repository implements RepositoryInterface
         return $this->model->destroy($id);
     }
 
-    // show the record with the given id
+    /**
+     * show the record with the given id
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection
+     */
     public function show($id)
     {
         return $this->model->findOrFail($id);

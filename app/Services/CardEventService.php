@@ -30,6 +30,16 @@ class CardEventService extends Service
         }
     }
 
+    public function getAllCount()
+    {
+        return $this->repository->getAllCount();
+    }
+
+    public function getAll()
+    {
+        return $this->repository->all();
+    }
+
     private function payResource(CardEvent $cardEvent)
     {
         //ResourceService->pay();

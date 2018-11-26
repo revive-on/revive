@@ -15,21 +15,24 @@
 // Auth Logic...
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 // Core Logic...
 Route::get('/cards', function () {
     return view('templates.card');
 });
 
-Route::get('/redrock', function(){
+Route::get('/redrock', function () {
     return view('templates.card');
 });
 
 Route::get('/', function () {
     return view('templates.index');
 });
+
+Route::get('/maps', function () {
+    return view('templates.map');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -37,14 +40,15 @@ Route::get('/lab', function () {
     return view('templates.lab');
 });
 
-Route::get('/logs', function(){
+Route::get('/logs', function () {
     return view('templates.log');
 });
 
-Route::get('/turns/{id}', 'TurnsController@index');
+Route::get('/turns', 'TurnsController@index');
 
 Route::get('/cardEvents/listCardEvents', 'CardEventsController@listCardEvents');
 
 Route::get('/cardEvents/getNewEvent', 'CardEventsController@getNewEvent');
 
 Route::get('/hi', 'CardEventsController@hi');
+

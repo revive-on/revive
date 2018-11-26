@@ -31,11 +31,11 @@
 <body background="images/back.gif">
 <div id="mute"></div>
 <div id="app">
+    <app></app>
 </div>
 <p></p>
-<audio controls autoplay loop>
-    <!--<source src="sound/trunks-theme.mp3" type="audio/mpeg">-->
-    Your browser does not support the audio element.
+<!--<source src="sound/trunks-theme.mp3" type="audio/mpeg">-->
+Your browser does not support the audio element.
 </audio>
 <script src="js/app.js"></script>
 
